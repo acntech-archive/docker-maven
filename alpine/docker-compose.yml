@@ -1,0 +1,8 @@
+version: "2"
+
+services:
+  acntech_maven:
+    build: .
+    image: acntech/maven:latest-alpine
+    container_name: acntech-maven
+    hostname: maven.acntech.internal
