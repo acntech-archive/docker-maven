@@ -11,7 +11,8 @@ ENV PATH $PATH:${JAVA_HOME}/bin
 
 
 RUN apk update && \
-    apk upgrade
+    apk upgrade && \
+    rm -rf /var/cache/apk/*
 
 RUN wget --no-cookies --no-check-certificate "${MAVEN_URL}" -O /tmp/maven.tar.gz
 RUN wget --no-cookies --no-check-certificate "${MAVEN_URL}.asc" -O /tmp/maven.tar.gz.asc

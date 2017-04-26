@@ -7,7 +7,8 @@ ARG MAVEN_DIR=apache-maven-3.3.9
 
 
 RUN apt-get update && \
-    apt-get -y upgrade
+    apt-get -y upgrade && \
+    rm -rf /var/lib/apt/lists/*
 
 RUN wget --no-cookies --no-check-certificate "${MAVEN_URL}" -O /tmp/maven.tar.gz
 RUN wget --no-cookies --no-check-certificate "${MAVEN_URL}.asc" -O /tmp/maven.tar.gz.asc
