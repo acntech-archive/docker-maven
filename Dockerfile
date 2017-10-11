@@ -2,8 +2,9 @@ FROM acntechie/jdk:latest
 MAINTAINER Thomas Johansen "thomas.johansen@accenture.com"
 
 
-ARG MAVEN_URL=https://www.apache.org/dist/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz
-ARG MAVEN_DIR=apache-maven-3.3.9
+ARG MAVEN_VERSION=3.5.0
+ARG MAVEN_URL=https://www.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz
+ARG MAVEN_DIR=apache-maven-${MAVEN_VERSION}
 
 
 RUN apt-get update && \
@@ -28,8 +29,8 @@ RUN update-alternatives --install "/usr/bin/mvn" "mvn" "/opt/maven/default/bin/m
 
 
 ENV MAVEN_HOME /opt/maven/default
-ENV M2_HOME $MAVEN_HOME
-ENV PATH $PATH:$MAVEN_HOME/bin
+ENV M2_HOME ${MAVEN_HOME}
+ENV PATH ${PATH}:${MAVEN_HOME}/bin
 
 
-CMD ["/bin/bash"]
+CMD ["mvn", "-version"]
